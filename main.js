@@ -1,39 +1,51 @@
-import {API_KEY, BASE_URL, IMG_URL, language} from "./api.js"
+
+import {API_KEY, BASE_URL, IMG_URL, language, include_adult} from "./api.js"
 
 
-function getMovie(id){
-    axios.get(`${BASE_URL}${id}?${API_KEY}&${language}`)
-    .then(response => {
-        console.log(response.data)
-        
-        if (response.data.adult == true){
-            // cover.src = null
-            // cover.alt = response.data.title
-            console.log("+18")
+async function getMovie(id){
+    try{
+
+        const getMovie = await axios.get(`${BASE_URL}${id}?${API_KEY}&${language}&${include_adult}`)
+    
+        const movie = getMovie.data
+
+        // const date = new Date(movie.release_date)
+
+        // console.log(movie)
+    
+        // const day = date.getDate() < 10 ? `0${date.getDate()}`: date.getDate()
+        // const month_fix = parseInt(date.getMonth()) + 1;
+        // const month = month_fix < 10 ? `0${month_fix}`: month_fix
+  
+        // console.log(month_fix)
+
+        if(movie.adult === true){
+            alert("+18: Refaça sua busca")
         }else{
-            title.textContent = response.data.title
-            runtime.textContent = response.data.runtime
-            overview.textContent = response.data.overview
-            release_date.textContent = response.data.release_date
+            title.textContent = movie.original_title
+            runtime.textContent = movie.runtime + " min"
+            overview.textContent = movie.overview
+            // release_date.textContent = `${day}/${month}/${date.getFullYear()}`
             const arrayGenres =[]
-            for (const genres_data of response.data.genres) {
-                console.log(genres_data.name)
+            for (const genres_data of movie.genres) {
                 arrayGenres.push(genres_data.name)
             }
             genres.textContent = arrayGenres
-            cover.src = IMG_URL+response.data.poster_path
+            cover.src = IMG_URL+movie.poster_path
+            cover.alt = movie.title
         }
+        
+           
+    }catch(e){
+        console.log(e)
+        if(e.message){
+            alert(`Filme não encontrado! Refaça sua busca`)
 
-    })
-    .catch(error => console.error(error))
+        }
+        
+        // document.querySelector("span#span_error").innerHTML = `${e.message}`
+    }
 }
-
-
-// function latestMovie(){
-//     axios.get(`https://api.themoviedb.org/3/movie/latest?${API_KEY}&language=en-US`)
-//     .then(response => console.log(response.data.id))
-//     .catch(error => console.error(error))
-// }
 
 const button = document.getElementById("find_movie")
 button.addEventListener("click", function(){
@@ -45,11 +57,3 @@ button.addEventListener("click", function(){
     getMovie(random)
     
 })
-
-
-// latestMovie()
-
-
-
-// console.log(random)
-

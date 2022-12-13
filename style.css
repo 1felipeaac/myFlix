@@ -1,0 +1,128 @@
+:root {
+    --title: #fffcf9;
+    --subtitle: #b3b3b3;
+    --bg-button: #e9e6e3;
+    --background: linear-gradient(43deg, #102d71 0%, #000000 52%, #c12a23 100%);
+  }
+body{
+    margin: 0;
+    background: var(--background);
+    background-size: auto;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+#container{
+    padding: 50px 200px 100px 200px;
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "aside main"
+    "footer footer";
+    /* border: 1px solid red; */
+}
+header, footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr 1fr;
+}
+header{
+    grid-area: header;
+    /* border: 1px solid green; */
+    color: var(--title);
+}
+
+#img_header{
+    width: 100%;
+    max-width: 100px;
+}
+
+aside{
+    grid-area: aside;
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    align-content: center;
+    flex-wrap: wrap;
+    padding-right: 20px;
+}
+
+img:empty{
+    color: var(--subtitle);
+}
+
+main{
+    grid-area: main;
+    /* border: 1px solid purple; */
+    color: var(--subtitle);
+    padding: 50px 20px;
+}
+
+footer{
+    grid-area: footer;
+    /* border: 1px solid orange; */
+    color: var(--subtitle);
+    padding: 30px 0px 10px 0px;
+}
+
+#find_movie{
+    background-image: url("./assets/shuffle.svg");
+    border-radius: 10px;
+    background-size: 20%;
+    padding-left: 60px;
+    height: 50px;
+    width: 100%;
+    max-width: 200px;
+    background-repeat: no-repeat;
+    background-position: 20px;
+    /* font-size: small; */
+    font-weight: bolder;
+}
+
+#p_footer{
+    width: 350px;
+    text-align: center;
+}
+
+
+#cover{
+    width: auto;
+    height: 350px;
+}
+
+#list{
+    list-style: none;
+}
+
+@media (max-width: 425px) {
+    #container{
+        padding: 0px;
+        display: grid;
+        grid-template-areas: 
+        "header"
+        "aside"
+        "main"
+        "footer";
+    }
+
+    header{
+        padding-top: 20px;
+    }
+
+    aside{
+        justify-content: center;
+        padding: 0px;
+    }
+
+    main{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    footer{
+        padding-top: 10px;
+    }
+}

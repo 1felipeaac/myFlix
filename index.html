@@ -4,21 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="./main.js"></script>
+    <link rel="stylesheet" href="./style.css">
     <title>myFlix</title>
 </head>
 <body>
     <div id="container">
-        <ul>
-            <li id="title"></li>
-            <li id="runtime"></li>
-            <li id="overview"></li>
-            <li id="release_date"></li>
-            <li id="genres"></li>
-            <li><img id="cover" src="" alt=""></li>
-        </ul>
+        <header>
+            <img id="img_header" src="./assets/shuffle.svg" alt="">
+            <h1>Não sabe o que assistir?</h1>
+        </header>
+        <aside>
+            <img id="cover" src="" alt="">
+        </aside>
+        <main>
+            <h2 id="title"></h2>
+            <p id="overview"></p>
+            <p id="genres"></p>
+            <p id="runtime"></p>
+            <!-- <p id="release_date"></p> -->
+
+        </main>
+        <footer>
+            <button id="find_movie">Encontrar Filme</button>
+            <p id="p_footer">Clique em "Encontrar Filme" que traremos informações de algum filme para você assistir hoje</p>
+        </footer>
     </div>
-    <button id="find_movie">Encontrar Filme</button>
+    
+   
 </body>
 </html>
