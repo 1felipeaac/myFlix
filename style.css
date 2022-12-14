@@ -19,14 +19,14 @@ body{
     "aside main"
     "footer footer";
     /* border: 1px solid red; */
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr 1fr;
 }
 header, footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 2fr 1fr;
 }
 header{
     grid-area: header;
@@ -50,7 +50,7 @@ aside{
     padding-right: 20px;
 }
 
-img:empty{
+#cover:empty{
     color: var(--subtitle);
 }
 
@@ -69,17 +69,31 @@ footer{
 }
 
 #find_movie{
-    background-image: url("./assets/shuffle.svg");
-    border-radius: 10px;
+    /* background-image: url("./assets/shuffle.svg");
     background-size: 20%;
-    padding-left: 60px;
+    background-repeat: no-repeat;
+    background-position: 20px;
+    padding-left: 60px; 
+    */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
     height: 50px;
     width: 100%;
     max-width: 200px;
-    background-repeat: no-repeat;
-    background-position: 20px;
-    /* font-size: small; */
     font-weight: bolder;
+    cursor: pointer;
+}
+
+/* #find_movie:hover{
+    transform: scale(1.1);
+
+} */
+
+#img_button{
+    width: 40px;
+    height: auto;
 }
 
 #p_footer{
@@ -97,6 +111,12 @@ footer{
     list-style: none;
 }
 
+/* @media (min-width: 768px) {
+    #container{
+        max-width: 1000px;
+    }
+} */
+
 @media (max-width: 425px) {
     #container{
         padding: 0px;
@@ -106,6 +126,10 @@ footer{
         "aside"
         "main"
         "footer";
+    }
+
+    body{
+        height: 100vh;
     }
 
     header{
@@ -126,3 +150,12 @@ footer{
         padding-top: 10px;
     }
 }
+
+@keyframes pulse {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }

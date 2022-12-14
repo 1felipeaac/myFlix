@@ -20,7 +20,8 @@ async function getMovie(id){
         // console.log(month_fix)
 
         if(movie.adult === true){
-            alert("+18: Refaça sua busca")
+            console.error("+18: Refaça sua busca")
+            alert()
         }else{
             title.textContent = movie.original_title
             runtime.textContent = movie.runtime + " min"
@@ -37,13 +38,9 @@ async function getMovie(id){
         
            
     }catch(e){
-        console.log(e)
-        if(e.message){
-            alert(`Filme não encontrado! Refaça sua busca`)
+        console.error(e.response.data.status_message)
+        alert()
 
-        }
-        
-        // document.querySelector("span#span_error").innerHTML = `${e.message}`
     }
 }
 
@@ -57,3 +54,12 @@ button.addEventListener("click", function(){
     getMovie(random)
     
 })
+
+function alert(){
+    document.getElementById("span_button").style.color = "red";
+    document.getElementById("img_button").style.animation = "pulse 1s infinite ease-in-out alternate";
+    button.addEventListener("click", ()=>{
+        document.getElementById("span_button").style.color = "black";
+        document.getElementById("img_button").style.animation = "none";
+    })
+}
