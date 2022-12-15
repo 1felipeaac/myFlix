@@ -11,7 +11,7 @@ async function getMovie(id){
 
         // const date = new Date(movie.release_date)
 
-        // console.log(movie)
+        console.log(movie)
     
         // const day = date.getDate() < 10 ? `0${date.getDate()}`: date.getDate()
         // const month_fix = parseInt(date.getMonth()) + 1;
@@ -38,7 +38,7 @@ async function getMovie(id){
         
            
     }catch(e){
-        console.error(e.response.data.status_message)
+        console.error(e.response.data)
         alert()
 
     }
@@ -46,20 +46,29 @@ async function getMovie(id){
 
 const button = document.getElementById("find_movie")
 button.addEventListener("click", function(){
-    var random 
-    // console.log("clicou")
-    const min = Math.ceil(1);
-    const max = Math.floor(1060766);
-    random = Math.floor(Math.random() * (max - min) + min);
-    getMovie(random)
+   
+    getMovie(randomNumber())
     
 })
 
+function randomNumber(){
+    var random 
+    const min = Math.ceil(1);
+    const max = Math.floor(1060766);
+    random = Math.floor(Math.random() * (max - min) + min);
+    return random
+}
+
 function alert(){
-    document.getElementById("span_button").style.color = "red";
-    document.getElementById("img_button").style.animation = "pulse 1s infinite ease-in-out alternate";
+    const span = document.getElementById("span_button")
+    const img = document.getElementById("img_button");
+    
+    span.style.color = "red";
+    span.innerText = "Tente Novamente";
+    img.style.animation = "pulse 1s infinite ease-in-out alternate";
     button.addEventListener("click", ()=>{
-        document.getElementById("span_button").style.color = "black";
-        document.getElementById("img_button").style.animation = "none";
+        span.style.color = "black";
+        img.style.animation = "none";
+        span.innerText = "Encontrar Filme";
     })
 }
